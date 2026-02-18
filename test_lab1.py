@@ -1,6 +1,13 @@
 import unittest
 from lab1_1 import zigzag
 class Testzigzag(unittest.TestCase):
+    def tets_3_3(self):
+        matrix = [
+            [1, 2, 6],
+            [3, 5, 7],
+            [4, 8, 9]
+        ]
+        self.assertEqual(zigzag(3, 3), matrix)
     def test_5_5(self):
         matrix = [
             [ 1,  2,  6,  7, 15],
