@@ -1,4 +1,6 @@
-def max_hamster(S: int, C: int, hamsters: list[list[int]] ) -> int:
+def max_hamster(S: int, C: int, hamsters: list[list[int]] ):
+    if S == 0:
+        return 0
     low = 0
     high = C
     better_count = 0
