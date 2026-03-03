@@ -1,8 +1,9 @@
 import unittest
-from lab3 import BinaryTree
-from lab3 import find_successor
+from lab3 import BinaryTree ,find_successor 
 class TestFindSuccessor(unittest.TestCase):
+    ''' Testing function'''
     def setUp(self):
+        ''' setup our binary tree'''
         self.root = BinaryTree(10)
         
         self.node_5 = BinaryTree(5, parent=self.root)
@@ -21,6 +22,7 @@ class TestFindSuccessor(unittest.TestCase):
         self.node_15.right = self.node_20
 
     def test_successor_for_7(self):
+        ''' testing...'''
         successor = find_successor(self.root, self.node_7)
         self.assertIsNotNone(successor)
         self.assertEqual(successor.value, 10)

@@ -1,4 +1,5 @@
 class BinaryTree:
+    """Binary tree node."""
     def __init__(self, value, left=None, right=None, parent=None):
         self.value = value
         self.left = left
@@ -6,6 +7,7 @@ class BinaryTree:
         self.parent = parent
 
 def find_successor(tree: BinaryTree, node: BinaryTree) -> BinaryTree:
+    """Find successor node."""
     if node.right:
         current = node.right
         while current.left:
