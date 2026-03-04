@@ -1,5 +1,5 @@
 import unittest
-from lab3 import BinaryTree ,find_successor 
+from lab3 import BinaryTree,find_successor 
 class TestFindSuccessor(unittest.TestCase):
     ''' Testing function'''
     def setUp(self):
