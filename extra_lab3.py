@@ -39,7 +39,7 @@ class BinaryTree:
         h = get_h(self)
         if h == 0: return
         
-        col_width = 1
+        col_width = 1 
         width = (2**h) * col_width
         matrix = [[" " for _ in range(width)] for _ in range(h * 2)]
         
@@ -55,11 +55,14 @@ class BinaryTree:
                 return
             
             mid = (left_bound + right_bound) // 2
-            place(depth * 2, mid, node.value)
+            val_str = str(node.value)
+            place(depth * 2, mid, val_str)
+
+            left_offset = 1 if len(val_str) % 2 == 0 else 0
             
             if node.left:
                 child_mid = (left_bound + mid) // 2
-                slash_pos = (mid + child_mid) // 2
+                slash_pos = (mid + child_mid) // 2 - left_offset
                 place(depth * 2 + 1, slash_pos, "/")
                 fill(node.left, depth + 1, left_bound, mid)
                 
@@ -75,7 +78,6 @@ class BinaryTree:
             line = "".join(row).rstrip()
             if line:
                 print(line)
-
 if __name__ == "__main__":
     filename = "tree.txt"
     if not os.path.exists(filename):
