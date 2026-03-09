@@ -79,7 +79,7 @@ class BinaryTree:
             if line:
                 print(line)
 if __name__ == "__main__":
-    filename = "tree.txt"
+    filename = "pre_tree.txt"
     if not os.path.exists(filename):
         print(f"file {filename} not found")
         exit(1)
