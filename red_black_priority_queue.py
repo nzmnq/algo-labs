@@ -1,4 +1,5 @@
 class Node:
+    '''Node class for the red-black tree.'''
     def __init__(self, value, priority, color="RED"):
         self.value = value
         self.priority = priority
@@ -8,11 +9,13 @@ class Node:
         self.parent = None
 
 class RedBlackPriorityQueue:
+    '''A priority queue implemented using a red-black tree. Higher priority values are served first.'''
     def __init__(self):
         self.NIL = Node(None, None, color="BLACK")
         self.root = self.NIL
 
     def peek(self):
+        '''Returns the value and priority of the highest priority item without removing it from the queue.'''
         if self.root == self.NIL:
             return None
         current = self.root
@@ -21,6 +24,7 @@ class RedBlackPriorityQueue:
         return current.value, current.priority
     
     def insert(self, value, priority):
+        '''Inserts a new item with the given value and priority into the queue.'''
         new_node = Node(value, priority)
         new_node.left = self.NIL
         new_node.right = self.NIL
@@ -52,19 +56,9 @@ class RedBlackPriorityQueue:
             return
         
         self._insert_fixup(new_node)
-    def pop(self):
-        if self.root == self.NIL:
-            return None
-            
-        node_to_remove = self.root
-        while node_to_remove.left != self.NIL:
-            node_to_remove = node_to_remove.left
-            
-        result = (node_to_remove.value, node_to_remove.priority)
-        self._delete_node(node_to_remove)
-        return result
 
     def _insert_fixup(self, k):
+        '''Fixes the tree after insertion to maintain red-black properties.'''
         while k.parent.color == "RED":
             if k.parent == k.parent.parent.right:
                 u = k.parent.parent.left
@@ -98,7 +92,22 @@ class RedBlackPriorityQueue:
                 break
         self.root.color = "BLACK"
 
+    def pop(self):
+        ''''Removes and returns the value and priority of the highest priority item from the queue.'''
+        if self.root == self.NIL:
+            return None
+            
+        node_to_remove = self.root
+        while node_to_remove.left != self.NIL:
+            node_to_remove = node_to_remove.left
+            
+        result = (node_to_remove.value, node_to_remove.priority)
+        self._delete_node(node_to_remove)
+        return result
+
+
     def _delete_node(self, z):
+        '''Deletes a node from the tree and fixes the tree to maintain red-black properties.'''
         y = z
         y_original_color = y.color
         if z.left == self.NIL:
@@ -126,7 +135,9 @@ class RedBlackPriorityQueue:
             
         if y_original_color == "BLACK":
             self._delete_fixup(x)
+
     def _delete_fixup(self, x):
+        '''Fixes the tree after deletion to maintain red-black properties.'''
         while x != self.root and x.color == "BLACK":
             if x == x.parent.left:
                 w = x.parent.right
@@ -173,6 +184,7 @@ class RedBlackPriorityQueue:
         x.color = "BLACK"
 
     def _rb_transplant(self, u, v):
+        '''Replaces the subtree rooted at node u with the subtree rooted at node v.'''
         if u.parent is None:
             self.root = v
         elif u == u.parent.left:
@@ -182,6 +194,7 @@ class RedBlackPriorityQueue:
         v.parent = u.parent
 
     def _left_rotate(self, x):
+        '''Performs a left rotation around the given node.'''
         y = x.right
         x.right = y.left
         if y.left != self.NIL:
@@ -197,6 +210,7 @@ class RedBlackPriorityQueue:
         x.parent = y
 
     def _right_rotate(self, y):
+        '''Performs a right rotation around the given node.'''
         x = y.left
         y.left = x.right
         if x.right != self.NIL:
