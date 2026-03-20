@@ -5,17 +5,14 @@ class clear_screen:
     def __init__(self):
         pass
     def clear(self):
-        os.system(
-            'cls' if os.name == 
-            'nt' else 'clear'
-            )
+        os.system('cls' if os.name == 'nt' else 'clear')
 
 class BoardingGate:
     def __init__(self):
         self.queue = RedBlackPriorityQueue()
         self.passenger_count = 0 
         self.deleted_count = 0
-        self.boarded_history = []
+        self.waiting_list = [] 
 
         self.priority_map = {
             "VIP": 100,
@@ -31,43 +28,48 @@ class BoardingGate:
 
         priority = self.priority_map[status]
         passenger_info = f'{name} [{status}]'
-        self.boarded_history.append(passenger_info[0])
+        
+        self.waiting_list.append(passenger_info) 
         self.queue.insert(passenger_info, priority)
         
         self.passenger_count += 1  
-        print(f"{name} successfully registered as {status}.")
+        print(f"[*] {name} successfully registered as {status}.")
 
     def start_boarding(self):
         print("\n BOARDING STARTED! ")
         
         count = 0
         while True:
-            passenger_info = self.queue.pop()
+            passenger_data = self.queue.pop() 
             
-            if passenger_info is None:
+            if passenger_data is None:
                 break
             self.passenger_count -= 1 
             self.deleted_count += 1
             count += 1
-            print(f"{count}. Passenger {passenger_info[0]} is called for boarding!")
+            print(f"{count}. Passenger {passenger_data[0]} is called for boarding!")
             
         if count == 0:
-            print("Queue is empty")
+            print("Queue is empty. No one to board.")
+        else:
+            self.waiting_list.clear()
         
         print("Boarding completed!\n")
 
-    def show_boarded_history(self):
-        list = []
-        print(f"Boarded passengers: {self.boarded_history}")
-        return list.append(self.boarded_history)
+    def show_waiting_list(self):
+        if self.waiting_list:
+            print(f"Passengers waiting in queue: {self.waiting_list}")
+        else:
+            print("The waiting queue is currently empty.")
     
     def show_passenger_count(self):
-        print(f"{self.boarded_history} Deleted from queue, total: {self.deleted_count}")
+        print(f"Total boarded (deleted from queue): {self.deleted_count}")
         return self.deleted_count
     
 def main():
     gate = BoardingGate()    
     clear_terminal = clear_screen()
+    clear_terminal.clear()
     print("System for Managing Boarding Gate")
 
     status_menu = {
@@ -81,7 +83,7 @@ def main():
         print("\nAvailable Actions:")
         print("1 - Register Passenger")
         print("2 - Start Boarding")
-        print("3 - Show Passenger Count")
+        print("3 - Show Waiting Passengers")
         print("0 - Exit Program")
         
         choice = input("Choose an action: ")
@@ -100,7 +102,6 @@ def main():
             
             if status_choice in status_menu:
                 status_word = status_menu[status_choice]
-                
                 gate.register_passenger(name, status_word)
             else:
                 print("[-] Error: Invalid status number. Registration cancelled.")
@@ -112,7 +113,7 @@ def main():
         
         elif choice == '3':
             clear_terminal.clear()
-            gate.show_boarded_history()
+            gate.show_waiting_list()
 
         elif choice == '0':
             clear_terminal.clear()
