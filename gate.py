@@ -1,7 +1,7 @@
 from red_black_priority_queue import RedBlackPriorityQueue
 import os
 
-class clear_screen:
+class ClearScreen:
     def __init__(self):
         pass
     def clear(self):
@@ -68,7 +68,7 @@ class BoardingGate:
     
 def main():
     gate = BoardingGate()    
-    clear_terminal = clear_screen()
+    clear_terminal = ClearScreen()
     clear_terminal.clear()
     print("System for Managing Boarding Gate")
 
