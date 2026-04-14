@@ -1,12 +1,15 @@
 class MinHeap:
+    '''Priorty queue'''
     def __init__(self):
         self.heap = []
-
+        
     def push(self, item):
+        '''Adding new elements'''
         self.heap.append(item)
         self._sift_up(len(self.heap) - 1)
 
     def pop(self):
+        '''Deleting elements'''
         if not self.heap:
             return None
         if len(self.heap) == 1:
@@ -24,6 +27,7 @@ class MinHeap:
             parent = (idx - 1) // 2
 
     def _sift_down(self, idx):
+        '''Diving'''
         n = len(self.heap)
         while True:
             smallest = idx
@@ -46,8 +50,9 @@ class MinHeap:
 
 
 def solve_gamsrv(n, clients, edges):
+    '''Main solution for our task'''
     graph = {i: [] for i in range(1, n + 1)}
-    for u, v, w in edges:
+    for u, v, w in edges: # Because the main graph is undirected we add elements to both sides
         graph[u].append((v, w))
         graph[v].append((u, w))
 
@@ -57,6 +62,7 @@ def solve_gamsrv(n, clients, edges):
     min_max_latency = float('inf')
 
     def dijkstra(start_node):
+        '''Dijkstra Algorithm'''
         distances = {i: float('inf') for i in range(1, n + 1)}
         distances[start_node] = 0
         pq = MinHeap()
