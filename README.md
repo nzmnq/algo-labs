@@ -1,33 +1,52 @@
-# Algo-Labs (Part 2, IOT 2025)
+## algo-labs
+                Доскочинський Назарій ІР-12
+        Алгоритмізація та програмування частина 2
 
-## 📋 Project Overview
-This repository serves as a centralized collection of my laboratory works for the **Algorithms and Data Structures** course (Part 2) at Lviv Polytechnic National University. Each project is developed within its own dedicated branch to ensure a clean and modular structure.
+#                   Варіант 1
 
-## 🚀 Navigation Index
-Use the table below to navigate through the different laboratory works. Each link leads directly to the source code for that specific topic.
+Iндiана Джонс i останнiй прямокутний обхiд
+Код задачi: IJONES
+В пошуках Святого Грааля Iндiана Джонс зiткнувся з небезпечним випробуванням.
+Йому потрiбно пройти крiзь прямокутний коридор, який складається з крихких плит
+(пригадайте сцену з фiльму «Iндiана Джонс i останнiй хрестовий похiд»). На кожнiй
+плитi написана одна лiтера:
 
-| Lab No. | Algorithm Topic / Description | Repository Link | Status |
-| :--- | :--- | :--- | :---: |
-| **Lab 1** | Zigzag 2D Array Traversal | [branch: lab1](https://github.com/nzmnq/algo-labs/tree/lab1) | ✅ |
-| **Lab 2** | Greedy Algorithm (Hamsters Optimization) | [branch: lab2](https://github.com/nzmnq/algo-labs/tree/lab2) | ✅ |
-| **Lab 3** | Binary Tree: In-Order Successor Search | [branch: lab3](https://github.com/nzmnq/algo-labs/tree/lab3) | ✅ |
-| **Lab 4** | Red-Black Tree based Priority Queue | [branch: lab4](https://github.com/nzmnq/algo-labs/tree/lab4) | ✅ |
-| **Lab 5** | Flood Fill Algorithm (Matrix Traversal) | [branch: lab5](https://github.com/nzmnq/algo-labs/tree/lab5) | ✅ |
-| **Lab 6** | Dijkstra's Algorithm (GAMSRV Latency Minimization) | [branch: lab6](https://github.com/nzmnq/algo-labs/tree/lab6) | ✅ |
-| **Lab 7** | Prim's Algorithm (Minimum Spanning Tree) | [branch: lab7](https://github.com/nzmnq/algo-labs/tree/lab7) | ✅ |
-| **Main** | Repository Documentation & Entry Point | [branch: main](https://github.com/nzmnq/algo-labs/tree/main) | ✅ |
+a a a
+c a b
+d e f
 
----
+Можна починати з будь-якої плити в найлiвiшому стовпцi. Виходом iз коридору є
+верхня права та нижня права плити (для прикладу вище — a та f).
+Iндiана спритний,i може переходити не лише на сусiдню плиту, а й перестрибувати
+через кiлька плит. Проте, щоб не провалитися крiзь пiдлогу, вiн повинен дотримуватися
+таких правил:
+1. Пiсля кожного кроку Iндiана повинен опинятися правiше, нiж був перед цим.
 
-## 💻 Local Setup
-To explore these algorithms locally, follow these steps:
+a a a
+c a b
+d e f
+2. Завжди можна переходити на одну плиту праворуч.
+a a a
+c a b
+d e f
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/nzmnq/algo-labs.git
+3. Крiм руху на одну плиту праворуч, можна перестрибувати, проте лише на ту
+саму лiтеру. Наприклад, злiтери a можна перестрибнути на будь-яку iншу
+лiтеру a за умови, що ми цим ходом просунемося правiше.
 
-## 🛠️ Tech Stack
+a a a
+c a b
+d e f
 
-    Language: Python
+1
 
-    Version Control: Git & GitHub
+Для заданого коридору, пiдрахуйте, скiльки всього iснує способiв пройти його успiшно.
+Вхiднi данi
+Вхiдний файл ijones .in складається з H +1 рядкiв.
+• Перший рядок мiстить два числа W i H, роздiленi пробiлом: W — ширина
+коридору, H — висота коридору, 1  W, H  2000.
+• Кожен з наступних H рядкiвмiстить слово довжиною W символiв, яке складається
+з малих латинських лiтер вiд a до z.
+Вихiднi данi
+Вихiдний файл ijones .out повинен мiстити одне цiле число — кiлькiсть рiзних
+шляхiв для виходу з коридору.
