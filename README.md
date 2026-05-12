@@ -15,6 +15,7 @@ Use the table below to navigate through the different laboratory works. Each lin
 | **Lab 5** | Flood Fill Algorithm (Matrix Traversal) | [branch: lab5](https://github.com/nzmnq/algo-labs/tree/lab5) | ✅ |
 | **Lab 6** | Dijkstra's Algorithm (GAMSRV Latency Minimization) | [branch: lab6](https://github.com/nzmnq/algo-labs/tree/lab6) | ✅ |
 | **Lab 7** | Prim's Algorithm (Minimum Spanning Tree) | [branch: lab7](https://github.com/nzmnq/algo-labs/tree/lab7) | ✅ |
+| **Lab 8** | Indiana Jones | [branch: lab8](https://github.com/nzmnq/algo-labs/tree/lab8) | ✅ |
 | **Main** | Repository Documentation & Entry Point | [branch: main](https://github.com/nzmnq/algo-labs/tree/main) | ✅ |
 
 ---
